@@ -8,7 +8,7 @@ describe('Launch browser', () => {
           //  cy.log("my title is ", title)
         // })
        cy.get("[name='country']").select('ANGOLA')
-       cy.xpath
+       cy.xpath()
         
     })
     
