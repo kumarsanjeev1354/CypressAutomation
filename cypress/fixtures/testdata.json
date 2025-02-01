@@ -1,0 +1,8 @@
+{
+    "Emailid": "[id='email']",
+    "email":"sksanjeev.kumar2507@gmail.com",
+    "URL":"https://demo.guru99.com/test/login.html",
+    "PasswordID":"[id='passwd']",
+    "Password":"test123",
+    "SignInbtn":"[id='SubmitLogin']"
+}

@@ -1,10 +1,24 @@
 const { defineConfig } = require("cypress");
+const createBundler = require("@bahmutov/cypress-esbuild-preprocessor");
+const preprocessor = require("@badeball/cypress-cucumber-preprocessor");
+const createEsbuildPlugin = require("@badeball/cypress-cucumber-preprocessor/esbuild");
 
 module.exports = defineConfig({
+  reporter: 'cypress-mochawesome-reporter',
   e2e: {
     setupNodeEvents(on, config) {
-      // implement node event listeners here
+      require('cypress-mochawesome-reporter/plugin')(on);
+      on("file:preprocessor",
+      createBundler({
+        plugins: [createEsbuildPlugin.default(config)],
+      }));
+      preprocessor.addCucumberPreprocessorPlugin(on, config);
+      return config;
     },
-    specPattern:'cypress/integration/examples/*.js'
+    //specPattern:'cypress/integration/examples/*.feature',
+    //specPattern:'cypress/integration/examples/*.js',
+    //specPattern:'cypress/integration/examples/*.js',
+    specPattern: "**/*.feature",
   },
+
 });
